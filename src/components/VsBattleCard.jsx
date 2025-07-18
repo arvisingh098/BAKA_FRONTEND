@@ -1,0 +1,85 @@
+import React from "react";
+import ep1 from "../assets/images/vs1.png";
+import ep2 from "../assets/images/vs2.png";
+import VsBattleText from "./VsBattleText";
+import CountDiv from "./CountDiv";
+import swords from "../assets/images/swords.png"
+
+const VsBattleCard = ({ setModal, windowSize }) => {
+  return (
+    <div
+      className="relative w-full  cursor-pointer"
+      onClick={() => {
+        setModal(true);
+      }}
+    >
+      <div className="relative w-full h-8  lg:h-16 lg:rounded-[15px] rounded-[6px] overflow-hidden flex bg-gradient-to-l from-[#188bf7] to-[#2991f8]">
+        <div
+          className="w-1/2 h-full bg-gradient-to-r from-[#dc5a71] to-[#f3becb] relative"
+          style={{
+            backgroundImage: `url('${ep2}'), linear-gradient(to right, #dc5a71, #f3becb)`,
+            // backgroundSize: "140px auto, 100% 100%",
+            backgroundSize: windowSize.width < 1024 ? "70px auto, 100% 100%" : "140px auto, 100% 100%",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "left center",
+          }}
+        />
+        <div
+          className="w-1/2 h-full relative"
+          style={{
+            backgroundImage: `url('${ep1}')`,
+            // backgroundSize: "90px auto",
+            backgroundSize: windowSize.width < 1024 ? "50px auto" : "90px auto",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right center",
+          }}
+        />
+      </div>
+      { !setModal && <div className="relative w-full  rounded-[15px] overflow-hidden flex items-center mt-1">
+        <div className="w-1/2 h-full bg-gradient-to-r from-[#4483FF] to-[#4483FF] text-[12px] text-white text-left px-2 !py-[2px] flex items-center justify-start z-10">
+          Nickname
+        </div>
+
+        <div className="w-1/2 h-full bg-gradient-to-l from-[#992929] to-[#992929] text-[12px] text-white text-right px-2 !py-[2px] flex items-center justify-end z-10">
+          Nickname
+        </div>
+
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-[40px] bg-yellow-300/80 blur-sm z-20 pointer-events-none rounded-full"></div>
+
+        <img
+          src={swords}
+          alt="VS"
+          className="absolute left-1/2 -bottom-3 -translate-x-1/2 -translate-y-1/2 h-[22px] z-30 pointer-events-none"
+        />
+      </div>
+}
+      <div className="absolute left-1/2 top-8 pointer-events-none z-20">
+        <VsBattleText windowSize={windowSize} />
+      </div>
+      <div className={`absolute ${setModal ? "left-1/3 -bottom-6" : "left-1/2 -translate-x-[calc(50%-5px)] -bottom-7"} pointer-events-none z-20`}>
+        {setModal ? 
+        <CountDiv
+          width={"lg:w-8 w-6"}
+          height={"lg:h-8 h-6"}
+          count={"999"}
+          countClass={"lg:text-[10px] text-[8px]"}
+          extraClasses={"!bg-black lg:!min-w-20 !min-w-14 !py-[2px] "}
+          rounded={"rounded-[4px]"}
+          border={"p-[2px]"}
+
+        /> :
+        <CountDiv
+          width={"lg:w-5 w-3"}
+          height={"lg:h-5 h-3"}
+          count={"999"}
+          countClass={"lg:text-[8px] text-[6px]"}
+          extraClasses={"!bg-black !min-w-12 !py-[1px] !px-1 "}
+          rounded={"rounded-[4px]"}
+          border={"p-[1px]"}
+        />}
+      </div>
+    </div>
+  );
+};
+
+export default VsBattleCard;
