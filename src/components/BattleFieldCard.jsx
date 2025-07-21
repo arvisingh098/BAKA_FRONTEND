@@ -5,8 +5,13 @@ import vs1 from "../assets/images/vs1.png";
 import ep1 from "../assets/images/episode1.png";
 import VsBattleText from "./VsBattleText";
 import CountDiv from "./CountDiv";
+import { useNavigate } from "react-router-dom";
+import count from "../assets/images/count.png"
 
-const BattleFieldCard = ({windowSize}) => {
+const BattleFieldCard = ({windowSize, defend}) => {
+
+  const navigate = useNavigate()
+
   return (
     <div
       className="flex max-w-5xl lg:h-20 sm:h-15 h-10 lg:mx-auto rounded-[10px] shadow-xl relative lg:w-[28vw] sm:w-[35vh] w-[28vh]"
@@ -22,7 +27,7 @@ const BattleFieldCard = ({windowSize}) => {
       <div className="lg:w-[25vw] sm:w-[30vh] w-[22vh] absolute right-0 -top-[0px]">
         <div className="custom-border !pt-[2px] !pr-[2px] !pb-[2px] !pl-[4px] !rounded-r-[10px] custom-clip2 relative z-0">
           <div
-            className="bg-[#3967e6]/80 lg:h-20 sm:h-15 h-10 rounded-r-[10px] custom-clip2 relative z-10 overflow-hidden"
+            className={`${defend ? "bg-red-500/60" : "bg-[#3967e6]/80"} lg:h-20 sm:h-15 h-10 rounded-r-[10px] custom-clip2 relative z-10 overflow-hidden`}
             style={{
               boxShadow: "inset 0 4px 12px rgba(0, 0, 0, 0.8)",
             }}
@@ -108,9 +113,12 @@ const BattleFieldCard = ({windowSize}) => {
                   />
                 </div>
               </div>
-              <button className="bg-white lg:py-2 lg:px-6 px-2 py-1 rounded-[10px] lg:rounded-2xl cursor-pointer lg:text-sm sm:text-[8px] text-[6px] lg:mb-4 mb-4 sm:mb-2 ">
+             {defend ?  <button onClick={()=>{navigate("/battle")}} style={{background: `linear-gradient(to bottom, white 70%, #8E8689 95%)`}} className="bg-white lg:py-2 lg:px-8 px-3.5 py-1 rounded-[10px] lg:rounded-[10px] cursor-pointer lg:text-[10px] sm:text-[8px] text-[4px] lg:mb-4 mb-4 sm:mb-2 ">
                 Defend yourself
-              </button>
+              </button> :
+               <button  onClick={()=>{navigate("/battle")}} style={{background: `linear-gradient(to bottom,  white 70%, #8E8689 95%)`}} className="bg-white lg:py-2 lg:px-4 px-2 py-1 rounded-[10px] shadow-2xl lg:rounded-[10px] cursor-pointer lg:text-[10px] sm:text-[8px] text-[4px] lg:mb-4 mb-4 sm:mb-2 ">
+                waiting for opponnent
+              </button>}
             </div>
           </div>
         </div>
@@ -120,10 +128,13 @@ const BattleFieldCard = ({windowSize}) => {
           width={"lg:w-8 sm:w-5 w-3"}
           height={"lg:h-8 sm:h-5 h-3"}
           count={"999"}
+          image={count}
           countClass={"lg:text-[10px] sm:text-[7px]  text-[4px]"}
           extraClasses={"!bg-black lg:!min-w-20 sm:!min-w-11 !min-w-6 !py-[2px] "}
           rounded={"rounded-[4px]"}
           border={"p-[1px]"}
+          bgImageSize={ windowSize.width < 620 ? "8px 8px":  windowSize.width < 1024 ? "12px 12px":"20px 20px"}
+          backgroundPosition={ windowSize.width < 620 ? "2px 2px" :  windowSize.width < 1024 ? "4px 4px" :"6px 6px"}
         />
       </div>
     </div>

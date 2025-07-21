@@ -1,6 +1,6 @@
-import { button } from "framer-motion/client";
-import Button from "./Button";
+
 import CancelButton from "./CancelButton";
+import { FaUserLarge } from "react-icons/fa6";
 
 const Bribes = ({
   index,
@@ -8,7 +8,8 @@ const Bribes = ({
   offer = "700 Token Name",
   votes = null,
   status ,
-  button = false
+  button = false,
+  windowSize
 }) => {
   return (
     <div key={index} className="mb-4">
@@ -17,9 +18,15 @@ const Bribes = ({
           <tr className="h-12 lg:h-20">
        
             <td className="w-[70px] px-4 align-middle">
-              <div className="w-6 lg:w-12 h-6 lg:h-12 rounded-full bg-gradient-to-br from-[#94C2BD] to-[#87DBD0] flex items-center justify-center">
-                <div className="w-5 lg:w-8 h-5 lg:h-8 bg-white rounded-full" />
-              </div>
+              <div
+  className={`w-6 lg:w-12 h-6 lg:h-12 rounded-full flex items-center justify-center ${
+    index % 2 === 1
+      ? "bg-gradient-to-br from-[#94C2BD] to-[#87DBD0]"
+      : "bg-gradient-to-br from-[#a075f0e1] to-[#905bf1cb]"
+  }`}
+>
+  <FaUserLarge size={windowSize.width < 640 ? 14 : windowSize.width < 1024 ? 16 : 30} />
+</div>
             </td>
 
            

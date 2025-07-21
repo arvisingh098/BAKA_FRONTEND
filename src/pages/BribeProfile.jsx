@@ -13,12 +13,15 @@ import PlayerList from "../components/PlayerList.jsx";
 import PlayerStatusCard from "../components/PlayerStatusCard.jsx";
 import { useEffect, useState } from "react";
 import BribeSweepPanel from "../components/BribeSweepPanel.jsx";
+import { FaArrowLeft } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const BribeProfile = ({
   tokens = [1, 2, 3, 4, 5],
   playerList = [1, 2, 3, 4, 5, 6, 7, 8],
 }) => {
   const [activeTab, setActiveTab] = useState("tab");
+  const navigate = useNavigate()
 
     const [windowSize, setWindowSize] = useState({
         width: window.innerWidth,
@@ -43,8 +46,8 @@ const BribeProfile = ({
     <BackGround2>
       <Header />
       <div className="flex gap-4 lg:px-28 sm:px-12 px-8 ">
-        <p className="text-white text-[10px]">back</p>
-        <div className="border-1 border-white rounded-2xl bg-black/30 backdrop-blur-lg sm:w-[50vw] w-[40vh] ">
+        <p className="text-white text-[10px] cursor-pointer " onClick={()=>{navigate(-1)}}><FaArrowLeft size={windowSize.width < 640 ? 20 : 30} /></p>
+        <div className="border-1 border-white rounded-2xl bg-black/30 backdrop-blur-lg sm:w-[50vw] w-[60vh] ">
           <div className=" border-r sm:pt-10 pt-2 pl-6 ">
             <div className="flex items-center gap-6 relative">
               <UserCard
@@ -144,9 +147,9 @@ const BribeProfile = ({
                     />
                   </div>
                 </div>
-                <div className="sm:h-52 lg:h-55 h-24 overflow-scroll custom-scrollbar2 w-full flex flex-col gap-1">
+                <div className={`sm:h-52 lg:h-55 h-24 overflow-scroll ${windowSize.width < 1024 ? "custom-scrollbar2-mobile" : "custom-scrollbar2"} w-full flex flex-col gap-1`}>
                   {playerList.map((player) => {
-                    return <PlayerStatusCard />;
+                    return <PlayerStatusCard windowSize={windowSize}/>;
                   })}
                 </div>
               </div>

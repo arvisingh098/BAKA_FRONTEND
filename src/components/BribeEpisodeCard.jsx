@@ -2,8 +2,27 @@ import video from "../assets/images/video.png";
 import CountDiv from "./CountDiv";
 import coin from "../assets/images/coin1.png";
 import grid from "../assets/images/grid.png";
+import { useEffect, useState } from "react";
 
 const BribeEpisodeCard = ({episode}) => {
+   const [windowSize, setWindowSize] = useState({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+      window.addEventListener("resize", handleResize);
+  
+      handleResize();
+  
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
   return (
     <div className="relative z-10 sm:!w-fit max-w-md !w-20 p-[2px] sm:p-[4px] sm:!rounded-4xl !rounded-[10px] gradient-border">
       <div
@@ -50,7 +69,8 @@ const BribeEpisodeCard = ({episode}) => {
                   rounded={"rounded-[6px]"}
                   border={"p-[2px]"}
                   image={coin}
-                  bgImageSize={"35px 35px"}
+                  // bgImageSize={"35px 35px"}
+                  bgImageSize={ windowSize.width <640 ? "18px 18px" : "35px 35px"}
                   backgroundPosition={"-0.2px 0.5px"}
                 />
               </div>

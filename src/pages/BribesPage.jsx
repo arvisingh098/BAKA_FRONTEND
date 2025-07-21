@@ -555,7 +555,6 @@ const BribesPage = () => {
           : windowSize?.width < 1024
           ? sizeTab
           : sizeDesktop}
-        {}
         <Modal
           onClose={() => {
             setInfoModal(false);
@@ -649,6 +648,7 @@ const BribesPage = () => {
                     votes={bribe?.vote ? true : false}
                     button={bribe?.button ? true : false}
                     status={bribe?.status}
+                    windowSize={windowSize}
                   />
                 );
               })}

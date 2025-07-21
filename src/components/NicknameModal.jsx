@@ -8,6 +8,7 @@ import HeadingCard from "./HeadingCard";
 import Token from "./Token";
 import Polygon from "./Polygon";
 import UserDetailCard from "./UserDetailsCard";
+import count from "../assets/images/count.png"
 
 const NicknameModal = ({ isOpen, onClose, user, tokens, items, nfts }) => {
   if(!isOpen) return null
@@ -70,6 +71,10 @@ const NicknameModal = ({ isOpen, onClose, user, tokens, items, nfts }) => {
           countClass={" text-[10px] sm:text-[14px]"}
           rounded={"rounded-[6px]"}
           extraClasses={" !min-w-20 sm:!min-w-28 !py-[1px] sm:!py-[4px] "}
+          
+bgImageSize={ windowSize.width < 620 ? "16px 16px" :"25px 25px"}
+                        backgroundPosition={ windowSize.width < 620 ? "5px 5px" :"10px 10px"}
+                        image={count}
 
                   />
                   <div className="px-2 rounded-md text-xs">
@@ -227,6 +232,9 @@ const NicknameModal = ({ isOpen, onClose, user, tokens, items, nfts }) => {
                     height={"h-12"}
                     width={"w-12"}
                     extraClasses={"!py-1 !min-w-36"}
+                    bgImageSize={ windowSize.width < 620 ? "8px 8px" :"30px 30px"}
+                        backgroundPosition={ windowSize.width < 620 ? "2px 2px" :"10px 10px"}
+                        image={count}
                   />
                   <div className="px-2 py-1 rounded-md text-xs">
                     <img

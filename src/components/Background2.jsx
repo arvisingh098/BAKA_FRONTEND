@@ -9,7 +9,7 @@ const BackGround2 = ({ children }) => {
     const handleResize = () => {
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const isLandscape = w < 1024;
+      const isLandscape = w < 1025;
 
       if (isLandscape) {
         // Rotate full layout

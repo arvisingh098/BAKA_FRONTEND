@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PhaseComponent from "./components/PhaseComponent";
 
 const ConnectToPlay     = lazy(() => import("./pages/ConnectToPlay"));
 const BakaLanding       = lazy(() => import("./pages/BakaLanding"));
@@ -27,7 +28,6 @@ export default function App() {
           <Route path="/nickname"      element={<NicknameModal />} />
           <Route path="/carousel"      element={<Carousel />} />
           <Route path="/battle"        element={<BattleGround />} />
-          <Route path="/battles"       element={<BattleModal />} />
           <Route path="/submission"    element={<SubmissionPages />} />
         </Routes>
       </Suspense>

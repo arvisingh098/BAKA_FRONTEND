@@ -33,7 +33,7 @@ export default function ConnectToPlay() {
   }, []);
 
   const characterClass =
-    windowSize?.width < 1024
+    windowSize?.width < 1025
       ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[100vw] w-[100vh]"
       : "bottom-12 left-0 right-0 h-[85vh]";
 
@@ -77,7 +77,7 @@ export default function ConnectToPlay() {
 
   const testTab = (
     <>
-      <div className=" lg:rotate-0 rotate-[90deg] absolute -left-22 top-0 w-full h-[450px]  z-10 cursor-pointer ">
+      <div className={`${windowSize?.width < 1025 ? "rotate-[90deg]" : "rotate-0"} absolute -left-22 top-0 w-full h-[450px]  z-10 cursor-pointer `}>
         <div className=" connectToPlay inset-0  absolute bottom-3 left-0  w-[120vh] bg-pink-500/50 backdrop-blur-xs"></div>
         <div className="absolute -left-2 inset-[3px] bg-[#08053C]/60  connectToPlay text-white flex items-center justify-center w-[120vh] overflow-hidden border-b-8 backdrop-blur-xs  border-pink-500/50"></div>
         <Link
@@ -88,7 +88,7 @@ export default function ConnectToPlay() {
         </Link>
       </div>
       <div
-        className=" lg:rotate-0 rotate-[90deg] absolute top-1/2 -translate-y-[40%] -left-1/2 translate-x-[30px] z-20 right-0 h-[28vw] bg-contain bg-bottom bg-no-repeat "
+        className={`${windowSize?.width < 1025 ? "rotate-[90deg]" : "rotate-0"} absolute top-1/2 -translate-y-[40%] -left-1/2 translate-x-[30px] z-20 right-0 h-[28vw] bg-contain bg-bottom bg-no-repeat `}
         style={{ backgroundImage: `url(${logo})` }}
       ></div>
     </>
@@ -98,12 +98,12 @@ export default function ConnectToPlay() {
     <BackGround1>
       <div className="relative min-h-screen overflow-hidden">
         <div
-          className={`lg:rotate-0 rotate-[90deg] absolute  bg-contain bg-bottom bg-no-repeat ${characterClass} `}
+          className={`${windowSize?.width < 1025 ? "rotate-[90deg]" : "rotate-0"} absolute  bg-contain bg-bottom bg-no-repeat ${characterClass} `}
           style={{ backgroundImage: `url(${character})` }}
         ></div>
         {windowSize?.width < 640
           ? testmobile
-          : windowSize?.width < 1024
+          : windowSize?.width < 1025
           ? testTab
           : test}
         <>

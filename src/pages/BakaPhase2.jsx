@@ -56,7 +56,7 @@ const BakaPhase2 = () => {
                   MY ACTIVE BATTLEFIELD
                 </div>
                 <BattleFieldCard windowSize={windowSize} />
-                <BattleFieldCard windowSize={windowSize} />
+                <BattleFieldCard windowSize={windowSize} defend={true} />
                 <BattleFieldCard windowSize={windowSize} />
               </div>
               <div className=" flex flex-col lg:gap-4 gap-2">
@@ -90,24 +90,23 @@ const BakaPhase2 = () => {
                 </div>
                 <div className={`lg:h-40 ${windowSize.width < 400 ? "h-8" : windowSize.width < 750 ?  "h-[12vw]" : "h-[21vw]" } overflow-scroll lg:custom-scrollbar2 custom-scrollbar2-mobile flex flex-col gap-2 w-full`}>
                   {playerList.map((player) => {
-                    return <PlayerStatusCard />;
+                    return <PlayerStatusCard windowSize={windowSize} />;
                   })}
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="w-1/2 lg:h-80 sm:h-55 h-35 relative cursor-pointer"
-            style={{
-              backgroundImage: `url('${soulSociety}')`,
-              backgroundSize: "contain",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "right center",
-            }}
-            onClick={()=>{
-                setModal(true)
-            }}
-          ></div>
+         <div
+  className="w-1/2 lg:h-80 sm:h-55 h-35 relative  flex items-center justify-end"
+ 
+>
+  <img
+    src={soulSociety}
+    alt="Soul Society"
+    className="h-full object-contain cursor-pointer"
+     onClick={() => setModal(true)}
+  />
+</div>
         </div>
 
         <div className="relative overflow-visible flex justify-center items-center gap-4 px-4 py-4">
@@ -121,7 +120,7 @@ const BakaPhase2 = () => {
         </div>
         <SoulSocietyModal open={modal} setModal={setModal} tab={""} windowSize={windowSize}/>
         <LiveBattleModal open={liveModal}  setModal={setLiveModal} tab={"Active Battle"} windowSize={windowSize}/>
-        <LeaderboardModal isOpen={leaderBoardModal} setModal={setLeaderBoardModal}  />
+        <LeaderboardModal isOpen={leaderBoardModal} setModal={setLeaderBoardModal}  windowSize={windowSize} />
       </div>
     </BackGround2>
   );

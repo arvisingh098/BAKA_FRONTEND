@@ -3,7 +3,7 @@ import { useState } from "react";
 import swordIcon from "../assets/images/battleSheild.png";
 import shieldIcon from "../assets/images/sheild.png";
 
-export default function BattleCarousel({ nfts }) {
+export default function BattleCarousel({ nfts, windowSize }) {
   const [activeIndex, setActiveIndex] = useState(1);
   const total = nfts.length;
 
@@ -14,17 +14,23 @@ export default function BattleCarousel({ nfts }) {
     return "hidden";
   };
 
-  const cardVariants = {
+  const cardVariantsLarge = {
     center: { x: 0, scale: 1, opacity: 1, zIndex: 20 },
     left: { x: -120, scale: 0.85, opacity: 0.5, zIndex: 10 },
     right: { x: 120, scale: 0.85, opacity: 0.5, zIndex: 10 },
     hidden: { x: 500, scale: 0.6, opacity: 0, zIndex: 0 },
   };
+  const cardVariantsSmall = {
+    center: { x: 0, scale: 1, opacity: 1, zIndex: 20 },
+    left: { x: -60, scale: 0.85, opacity: 0.5, zIndex: 10 },
+    right: { x: 60, scale: 0.85, opacity: 0.5, zIndex: 10 },
+    hidden: { x: 500, scale: 0.6, opacity: 0, zIndex: 0 },
+  };
 
   return (
-    <div className="relative w-full h-[150px] max-w-[420px] mx-auto overflow-visible flex flex-col items-center justify-center gap-4 mb-6">
+    <div className="relative w-full lg:h-[150px] sm:h-[100px] h-[60px] lg:max-w-[420px] sm:max-w-[200px] max-w-[100px] mx-auto overflow-visible flex flex-col items-center justify-center  sm:gap-4 mb-6">
       <div
-        className="w-full flex justify-start  rounded-2xl px-2 py-1"
+        className="w-full flex justify-start text-[6px] sm:text-[10px] lg:text-[16px]  rounded-2xl px-2 py-1"
         style={{
           background: "linear-gradient(to right, #0d266b 2%, transparent 70%)",
         }}
@@ -48,15 +54,15 @@ export default function BattleCarousel({ nfts }) {
           return (
             <motion.div
               key={nft.id}
-              animate={cardVariants[position]}
+              animate={windowSize.width < 640 ? cardVariantsSmall[position] : cardVariantsLarge[position]}
               initial={false}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute w-[180px]  cursor-pointer"
-              style={{ zIndex: cardVariants[position].zIndex }}
+              className="absolute lg:w-[180px] w-[10px]  cursor-pointer"
+              style={{ zIndex: windowSize.width < 640 ? cardVariantsSmall[position].zIndex : cardVariantsLarge[position].zIndex }}
               onClick={() => setActiveIndex(i)}
             >
               <div className="relative w-full h-full">
-                <div className="absolute left-[30px] top-[25px] w-[75px] h-[75px] rounded-[6px] border border-yellow-300 shadow-lg bg-gradient-to-br from-[#FF447F]/40 to-[#FF447F]/60 z-10 ">
+                <div className="absolute lg:left-[30px] lg:top-[25px] sm:top-[25px] sm:left[25px] top-[20px] left-[20px] lg:w-[75px] lg:h-[75px] sm:w-[55px] sm:h-[55px] w-[35px] h-[35px] rounded-[6px] border border-yellow-300 shadow-lg bg-gradient-to-br from-[#FF447F]/40 to-[#FF447F]/60 z-10 ">
                   <div
                     className="w-full h-full bg-center bg-no-repeat bg-contain rounded-2xl"
                     style={{
@@ -67,7 +73,7 @@ export default function BattleCarousel({ nfts }) {
                     }}
                   ></div>
                 </div>
-                <div className="absolute w-[75px] h-[75px] rounded-[6px] border border-yellow-300 shadow-2xl bg-gradient-to-br from-cyan-700/40 to-teal-400/40 z-20">
+                <div className="absolute lg:w-[75px] lg:h-[75px] sm:w-[55px] sm:h-[55px] w-[35px] h-[35px] rounded-[6px] border border-yellow-300 shadow-2xl bg-gradient-to-br from-cyan-700/40 to-teal-400/40 z-20">
                   <div
                     className="w-full h-full bg-center bg-no-repeat bg-contain rounded-2xl"
                     style={{
@@ -88,12 +94,12 @@ export default function BattleCarousel({ nfts }) {
           );
         })}
       </div>
-      <div className="mt-24 flex gap-2 z-30">
+      <div className="lg:mt-24 flex gap-2 z-30 absolute top-25 sm:top-40 lg:relative lg:top-0">
         {nfts.map((_, index) => (
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
-            className={`w-[8px] h-[8px] rounded-full transition-all duration-300 ${
+            className={`lg:w-[8px] lg:h-[8px] sm:w-[6px] sm:h-[6px] w-[4px] h-[4px] rounded-full transition-all duration-300 ${
               activeIndex === index ? "bg-[#ffffff]/80" : "bg-[#414141]/40"
             }`}
           />

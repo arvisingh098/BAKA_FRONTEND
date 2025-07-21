@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import CountDiv from "./CountDiv";
+import count from "../assets/images/count.png"
+
 
 export default function Carousel({ nfts }) {
   const [activeIndex, setActiveIndex] = useState(1); 
@@ -120,6 +122,9 @@ export default function Carousel({ nfts }) {
           extraClasses={"!py-1 !min-w-4 !text-[6px]"}
           count={"9999"}
           rounded={"rounded-[6px]"}
+          bgImageSize={ windowSize.width < 620 ? "8px 8px" :"20px 20px"}
+                        backgroundPosition={ windowSize.width < 620 ? "4px 4px" :"6px 6px"}
+                        image={count}
         />
       </div>
     </div>
@@ -206,6 +211,9 @@ export default function Carousel({ nfts }) {
           extraClasses={"!py-1 !min-w-20 !text-[10px]"}
           count={"9999"}
           rounded={"rounded-[6px]"}
+           bgImageSize={ windowSize.width < 620 ? "8px 8px" :"20px 20px"}
+                        backgroundPosition={ windowSize.width < 620 ? "2px 2px" :"6px 6px"}
+                        image={count}
         />
       </div>
     </div>

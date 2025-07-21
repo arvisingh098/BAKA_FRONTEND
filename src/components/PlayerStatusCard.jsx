@@ -1,8 +1,9 @@
 import React from "react";
 import CountDiv from "./CountDiv";
 import ep1 from "../assets/images/episode1.png";
+import count from "../assets/images/count.png"
 
-const PlayerStatusCard = () => {
+const PlayerStatusCard = ({windowSize}) => {
   return (
     <div className="w-full max-w-3xl table-row shadow-lg pr-6 ">
       <div className="table-cell align-middle pr-1 sm:pr-3">
@@ -37,12 +38,15 @@ const PlayerStatusCard = () => {
             <CountDiv
               width={"lg:w-8 w-3"}
               height={"lg:h-8 h-3"}
-              bgImageSize={"14px 14px"}
+              bgImageSize={ windowSize.width < 1024 ? "8px 8px" :"20px 20px"}
+              backgroundPosition={ windowSize.width < 1024 ? "2px 2px" :"6px 6px"}
+              image={count}
               count={"9999"}
               extraClasses={"lg:!min-w-20 !min-w-4 !py-[1px]"}
               countClass={"lg:!text-[11px] !text-[3px] flex justify-end"}
               border={"p-[2px]"}
               rounded={"rounded-[6px]"}
+              
             />
           </div>
         </div>

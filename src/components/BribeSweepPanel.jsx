@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import UserDetailCard from "./UserDetailsCard";
 import Token from "./Token";
 import eth from "../assets/images/eth.png";
@@ -19,6 +19,9 @@ const bribeEpisode = [
 ]
 
 const BribeSweepPanel = ({activeTab, windowSize}) => {
+
+   const [value, setValue] = useState(1);
+
   return (
     <div className="max-h-[80vh] pb-4  rounded-xl  text-white font-sans">
       <div className="bg-gradient-to-r from-[#245dba] to-transparent text-left text-white/70 lg:text-sm text-[6px] sm:text-[10px] lg:py-2 lg:px-4 sm:py-1 sm:px-2 py-[1px] px-[4px] rounded-xl mb-1">
@@ -29,7 +32,7 @@ const BribeSweepPanel = ({activeTab, windowSize}) => {
       {activeTab === "tab" ? (
         <div className="relative">
           <div className=" gradient-bg pb-5 sm:pb-10 sm:py-2 rounded-xl ">
-            <div className="grid grid-cols-6 max-h-[100px] sm:max-h-[250px] lg:max-h-[340px] gap-2 lg:gap-8  overflow-y-auto p-3 pt-2 pb-2 custom-scrollbar2">
+            <div className={`grid grid-cols-6 max-h-[100px] sm:max-h-[250px] lg:max-h-[340px] gap-2 lg:gap-8  overflow-y-auto p-3 pt-2 pb-2 ${windowSize.width < 1024 ? "custom-scrollbar2-mobile" : "custom-scrollbar2"}`}>
               {dummyNFTs.map((nft, i) => (
                 <UserDetailCard
                   bgColor={"bg-[#083837]"}
@@ -38,10 +41,10 @@ const BribeSweepPanel = ({activeTab, windowSize}) => {
                    imageSize={windowSize?.width < 640
           ? "30px 30px"
           : windowSize?.width < 1024
-          ? "60px 60px"
+          ? "50px 50px"
           : "95px 95px"}
-                   height={"h-[40px] sm:h-[70px] lg:h-28"}
-                    width={"w-[40px] sm:w-[70px] lg:w-28"}
+                   height={"h-[40px] sm:h-[56px] lg:h-28"}
+                    width={"w-[40px] sm:w-[56px] lg:w-28"}
                     textColor={"!text-[7px] sm:!text-[9px] lg:!text-[11px] text-white"}
                   rounded={"!rounded-[10px] lg:!rounded-xl"}
                   gradientWidth={"w-fit"}
@@ -81,8 +84,15 @@ const BribeSweepPanel = ({activeTab, windowSize}) => {
                     }}
               >
                 <div className="text-[6px] sm:text-[12px] font-bold">SWEEP</div>
-                <input type="range" className="custom-slider-mobile lg:custom-slider  w-full" />
-                <div className="text-[6px] lg:text-[12px]">1</div>
+                <input
+        type="range"
+        className="custom-slider-mobile lg:custom-slider w-full"
+        min={1}
+        max={100} 
+        value={value}
+        onChange={(e) => setValue(Number(e.target.value))}
+      />
+                <div className="text-[6px] lg:text-[12px]">{value}</div>
               </div>
               <HeadingCard
                 rounded={"rounded-xl "}

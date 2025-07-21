@@ -8,6 +8,7 @@ import circle from "../assets/images/circleImage.png";
 import EpisodeCard from "../components/EpisodeCard";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PhaseComponent from "../components/PhaseComponent";
 
 function LayoutContent() {
 
@@ -32,17 +33,7 @@ function LayoutContent() {
 
   const sizeMobile = <>
       <div className=" flex justify-start ml-16 md:ml-48  flex-row">
-        <div
-          className="flex-[0_0_30%]  min-h-[60vw] lg:min-h-[60vh] bg-contain bg-center bg-no-repeat justify-between relative md:w-full"
-          style={{ backgroundImage: `url(${phase})` }}
-        >
-          <div className="absolute top-12 left-0">
-            <Link to={"/bribes"} className="p-14 "></Link>
-          </div>
-         <div className="absolute bottom-12 right-0">
-            <Link to={"/bribes"} className="p-14 "></Link>
-          </div>
-        </div>
+        <PhaseComponent />
 
         <div className="flex flex-col gap-4 mt-0 ml-10 md:ml-4">
           <EpisodeCard />
@@ -84,7 +75,7 @@ function LayoutContent() {
         </div>
       </div>
 
-      <marquee className="mt-2 bg-blue-950 py-2 text-yellow-300 text-[10px] text-center whitespace-nowrap">
+      <marquee className="mt-6 bg-blue-950 py-2 text-yellow-300 text-[10px] text-center whitespace-nowrap">
         <div className="font-medium tracking-widest space-x-6">
           ⭐⭐⭐ PHASE 1 IS LIVE !!! GO VOTE AND PARTICIPATE !!! BAKA BAKA BAKA
           !!!
@@ -93,18 +84,8 @@ function LayoutContent() {
     </>
 
     const sizeTab = <>
-      <div className=" flex justify-start ml-30 pt-16   flex-row">
-        <div
-          className="flex-[0_0_30%]  min-h-[60vw] lg:min-h-[60vh] bg-contain bg-center bg-no-repeat justify-between relative md:w-full"
-          style={{ backgroundImage: `url(${phase})` }}
-        >
-          <div className="absolute top-35 left-0 ">
-            <Link to={"/bribes"} className="p-23 "></Link>
-          </div>
-         <div className="absolute bottom-35 right-0">
-            <Link to={"/bribes"} className="p-23 "></Link>
-          </div>
-        </div>
+      <div className=" flex justify-start ml-30 pt-16 flex-row">
+       <PhaseComponent />
 
         <div className="flex flex-col gap-4 mt-0 ml-10 md:ml-4">
           <EpisodeCard />
@@ -156,17 +137,7 @@ function LayoutContent() {
 
    const sizeDesktop = <>
     <div className="mt-16 flex justify-start ml-52">
-          <div
-            className="flex-[0_0_30%] min-h-[60vh] bg-contain bg-center bg-no-repeat justify-between relative "
-            style={{ backgroundImage: `url(${phase})` }}
-          >
-            <div className="absolute top-40 left-16">
-              <Link to={"/bribes"} className=" p-24"></Link>
-            </div>
-            <div className="absolute bottom-36 right-16">
-              <Link to={"/phase-2"} className="p-24 "></Link>
-            </div>
-          </div>
+          <PhaseComponent />
           <div className="flex flex-col gap-12 ml-20">
             <EpisodeCard />
             <div className="relative flex flex-col gap-4">
@@ -205,24 +176,14 @@ function LayoutContent() {
             </div>
           </div>
         </div>
-        <marquee className="mt-8 bg-blue-950 py-2 text-yellow-300 text-sm text-center animate-marquee">
+        <marquee className="mt-20 bg-blue-950 py-2 text-yellow-300 text-sm text-center animate-marquee">
       <div className="font-medium tracking-widest space-x-6">  ⭐⭐⭐ PHASE 1 IS LIVE !!! GO VOTE AND PARTICIPATE !!! BAKA BAKA BAKA !!! ⭐⭐⭐ PHASE 1 IS LIVE !!! GO VOTE AND PARTICIPATE !!!⭐⭐⭐ PHASE 1 IS LIVE !!! GO VOTE AND PARTICIPATE !!!⭐⭐⭐ PHASE 1 IS LIVE !!! GO VOTE AND PARTICIPATE !!!⭐⭐⭐ PHASE 1 IS LIVE !!! GO VOTE AND PARTICIPATE !!!</div>
       </marquee>
    </>
 
     const sizeBigDesktop = <>
     <div className="mt-16 flex justify-start ml-52">
-          <div
-            className="flex-[0_0_30%] min-h-[60vh] bg-contain bg-center bg-no-repeat justify-between relative "
-            style={{ backgroundImage: `url(${phase})` }}
-          >
-            <div className="absolute top-40 left-16">
-              <Link to={"/bribes"} className=" p-24"></Link>
-            </div>
-            <div className="absolute bottom-36 right-16">
-              <Link to={"/phase-2"} className="p-24 "></Link>
-            </div>
-          </div>
+         <PhaseComponent />
           <div className="flex flex-col gap-12 ml-20">
             <EpisodeCard />
             <div className="relative flex flex-col gap-4">

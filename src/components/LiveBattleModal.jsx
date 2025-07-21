@@ -34,9 +34,11 @@ const LiveBattleModal = ({
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
+    
+    
+     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
       <div
-        className="relative w-[900px] max-h-[80vh] overflow-y-visible shadow-lg  border-[4px] bg-[#23313a] border-yellow-50  rounded-none"
+        className="relative w-[550px] md:w-[550px] lg:w-[900px] max-h-[70vw] lg:max-h-[80vh] overflow-y-visible shadow-lg p-6 border-[4px] bg-[#23313a] border-yellow-50 mt-8 lg:mt-0  rounded-none"
         style={{
           boxShadow: "0 0 12px 2px rgba(254, 252, 232, 0.55)",
           backgroundImage: `url(${pattern})`,
@@ -46,16 +48,27 @@ const LiveBattleModal = ({
           backgroundBlendMode: "multiply",
         }}
       >
-        <div className="flex justify-start absolute -left-1 -top-10">
+        <button
+          onClick={() => {
+            setModal(false);
+          }}
+          className="absolute -top-10 right-0 text-white bg-red-600 rounded-full  cursor-pointer w-6 h-6 flex items-center justify-center text-xs"
+          style={{
+            boxShadow: "0 0 12px 2px rgba(254, 252, 232, 0.55)",
+          }}
+        >
+          ✕
+        </button>
+        <div className="flex justify-start absolute -left-1 sm:-top-7.5 lg:-top-10 -top-5">
           <div
-            className="relative w-[220px] h-[40px] cursor-pointer"
+            className="relative lg:w-[220px] sm:w-[140px] sm:h-[30px] w-[80px] h-[20px] lg:h-[40px] cursor-pointer"
             onClick={() => setActiveTab(tab)}
           >
             <div
               className={`absolute inset-0 z-0  bg-yellow-50 tab1-border tab1`}
             ></div>
             <div
-              className={`absolute z-10 top-[3px] right-[4px] -bottom-[1px] left-[4px] tab1 bg-[#23313a] text-white flex items-center justify-start px-5`}
+              className={`absolute z-10 top-[3px] right-[4px] -bottom-[1px] left-[4px] text-[6px] sm:text-[10px] lg:text-[14px] tab1 bg-[#23313a] text-white flex items-center justify-start px-3 sm:px-5`}
               style={{
                 boxShadow: "0 0 12px 2px rgba(254, 252, 232, 0.55)",
                 backgroundImage: `url(${pattern})`,
@@ -69,20 +82,9 @@ const LiveBattleModal = ({
             </div>
           </div>
         </div>
-
-        <button
-          onClick={() => {
-            setModal(false);
-          }}
-          className="absolute -top-10 right-0 text-white bg-red-600 rounded-full w-6 h-6 flex items-center justify-center text-xs cursor-pointer"
-          style={{
-            boxShadow: "0 0 12px 2px rgba(254, 252, 232, 0.55)",
-          }}
-        >
-          ✕
-        </button>
-
-        <div className="mt-10 flex flex-col gap-3 h-[60vh] overflow-y-auto custom-scrollbar p-6">
+        
+         
+          <div className={`lg:mt-10 mt-0 flex flex-col gap-3 lg:h-[60vh] h-[60vw] overflow-y-auto ${windowSize.width < 1024 ? "custom-scrollbar-mobile" : "custom-scrollbar"} p-6`}>
           <Battles windowSize={windowSize} />
           <Battles windowSize={windowSize} />
           <Battles windowSize={windowSize} />
@@ -97,6 +99,7 @@ const LiveBattleModal = ({
           
 
         </div>
+       
       </div>
     </div>
   );
